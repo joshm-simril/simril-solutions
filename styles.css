@@ -1,0 +1,225 @@
+/* Simril Solutions — light, editorial-professional one-pager
+   Deliberately its own visual language (not the QA reference site).
+   Design notes reference Laws of UX where relevant. */
+
+:root {
+  --bg:        #ffffff;
+  --bg-alt:    #f5f6f8;
+  --ink:       #16181d;   /* high-contrast body text */
+  --ink-soft:  #545a67;   /* muted secondary text */
+  --line:      #e4e7ec;
+  --accent:    #1f5fbf;   /* single, consistent accent (Jakob's Law: familiar link/CTA colour) */
+  --accent-ink:#17458c;
+  --accent-wash:#eef3fb;
+  --radius:    14px;
+  --maxw:      1080px;
+  --shadow-sm: 0 1px 2px rgba(16,24,40,.05);
+  --shadow-md: 0 10px 30px rgba(16,24,40,.10);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+               "Apple Color Emoji", sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Accessibility: visible focus + skip link (usability > pure aesthetics) */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: .6rem 1rem;
+  z-index: 100;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.wrap.narrow { max-width: 720px; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--accent-ink); }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -.01em;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 9px;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+.brand-name { font-size: 1.05rem; }
+
+/* ---------- Buttons (Fitts's Law: comfortable targets; Von Restorff: primary stands out) ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  border: 1px solid transparent;
+  min-height: 48px;
+}
+.btn-sm { padding: 9px 16px; min-height: 40px; font-size: .95rem; }
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+  background: var(--accent-ink);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-ghost {
+  background: #fff;
+  color: var(--accent-ink);
+  border-color: var(--line);
+}
+.btn-ghost:hover { border-color: var(--accent); background: var(--accent-wash); }
+
+/* ---------- Hero ---------- */
+.hero { padding: 88px 0 56px; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--accent-ink);
+  margin: 0 0 18px;
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  margin: 0 0 22px;
+  max-width: 16ch;
+}
+.lede {
+  font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+  color: var(--ink-soft);
+  max-width: 58ch;
+  margin: 0 0 32px;
+}
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+/* ---------- Sections ---------- */
+.section { padding: 64px 0; }
+.section-alt { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -.01em;
+  margin: 0 0 32px;
+}
+.section p { margin: 0 0 18px; }
+.section.narrow p, .section .narrow p { color: #2b2f38; }
+
+/* ---------- Service cards (Law of Common Region) ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 26px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: #d3d9e2; }
+.card h3 { margin: 0 0 10px; font-size: 1.2rem; letter-spacing: -.01em; }
+.card p { margin: 0; color: var(--ink-soft); font-size: 1rem; }
+
+/* ---------- Contact ---------- */
+.contact { padding-bottom: 80px; }
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 0;
+  background: var(--bg-alt);
+}
+.footer-inner { display: flex; flex-direction: column; gap: 6px; }
+.footer-inner p { margin: 0; font-size: .92rem; }
+.muted { color: var(--ink-soft); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  body { font-size: 17px; }
+  .hero { padding: 56px 0 40px; }
+  .cards { grid-template-columns: 1fr; }
+  .btn { width: 100%; }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .header-inner .btn { width: auto; }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
