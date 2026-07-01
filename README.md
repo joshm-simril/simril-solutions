@@ -37,8 +37,10 @@ Two trackers, both privacy-friendly:
    token from *Cloudflare → Web Analytics → Add a site (JS snippet)*. No DNS/proxy change required.
 
 ## Booking
-The "Book a meeting" buttons point to `https://calendly.com/simril/enquiry` — a cloned
-20-minute event with business-qualifying questions. Update the URL if the slug changes.
+The "Book a meeting" buttons point to
+`https://calendly.com/simril/enquiry?guests=joshua.may@eonnext.com` — a cloned
+20-minute event with business-qualifying questions; the `guests` param auto-adds the
+contract calendar so the slot is blocked in both diaries. Update the URL if the slug changes.
 
 ## To confirm
 - [x] Company registration number — 16326011 (Companies House).
