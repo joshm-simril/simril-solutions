@@ -41,4 +41,6 @@ The "Book a meeting" buttons point to `https://calendly.com/simril/enquiry` — 
 20-minute event with business-qualifying questions. Update the URL if the slug changes.
 
 ## To confirm
-- [ ] Company registration number (footer placeholder `[company number]`).
+- [x] Company registration number — 16326011 (Companies House).
+- [ ] Replace Calendly slug if not using `enquiry`.
+- [ ] Add Cloudflare Web Analytics token to the beacon `<script>`.
