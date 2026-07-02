@@ -166,8 +166,9 @@ a:hover { color: var(--accent-ink); }
   letter-spacing: -.01em;
   margin: 0 0 32px;
 }
-.section p { margin: 0 0 18px; }
-.section.narrow p, .section .narrow p { color: #2b2f38; }
+/* Constrain reading measure while keeping the same left gutter as every
+   other section (text is left-aligned, not centred). */
+.section p { margin: 0 0 18px; max-width: 68ch; }
 
 /* ---------- Service cards (Law of Common Region) ---------- */
 .cards {
