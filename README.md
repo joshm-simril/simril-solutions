@@ -33,8 +33,9 @@ Point the domain at GitHub Pages **without touching email**:
 Two trackers, both privacy-friendly:
 1. **Plausible** — the `<script data-domain="simril.co.uk">` tag in `index.html` is live once you
    add `simril.co.uk` as a site in your Plausible dashboard.
-2. **Cloudflare Web Analytics** — uncomment the beacon `<script>` in `index.html` and paste the
-   token from *Cloudflare → Web Analytics → Add a site (JS snippet)*. No DNS/proxy change required.
+2. **Cloudflare Web Analytics** — already live. Because the site is proxied through Cloudflare
+   (orange cloud), the beacon is **auto-injected at the edge** — no `<script>` needed. Leave the
+   commented-out beacon in `index.html` commented out; uncommenting it would double-count visits.
 
 ## Booking
 The "Book a meeting" buttons point to
@@ -44,5 +45,5 @@ contract calendar so the slot is blocked in both diaries. Update the URL if the 
 
 ## To confirm
 - [x] Company registration number — 16326011 (Companies House).
-- [ ] Replace Calendly slug if not using `enquiry`.
-- [ ] Add Cloudflare Web Analytics token to the beacon `<script>`.
+- [x] Calendly slug — `enquiry`.
+- [x] Cloudflare Web Analytics — auto-injected via the proxy (no beacon token needed).
